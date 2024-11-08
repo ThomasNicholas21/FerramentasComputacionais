@@ -1,7 +1,7 @@
-from ferramentas import texto_embutido
+from ferramentas import texto_embutido, extrair_texto
 from pathlib import Path
 
-base_dir = Path("imagens")  # Diretório onde as imagens serão salvas
+base_dir = Path("imagens")  
 base_dir.mkdir(exist_ok=True)  
 
 image_path = base_dir / "imagem_original.png"
@@ -21,10 +21,12 @@ def menu():
     
     match opcoes:
         case '1':
-            texto = input('Digite um texto: ')
-            texto_embutido(image_path, texto, output_path)
+            texto_inserido = input('Digite um texto: ')
+            texto_embutido(image_path, texto_inserido, output_path)
             return False
         case '2':
+            texto_recuperado = extrair_texto(image_path)
+            print(texto_recuperado)
             return False
         case '3':
             return False
