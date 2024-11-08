@@ -1,3 +1,11 @@
+from ferramentas import texto_embutido
+from pathlib import Path
+
+base_dir = Path("imagens")  # Diretório onde as imagens serão salvas
+base_dir.mkdir(exist_ok=True)  
+
+image_path = base_dir / "imagem_original.png"
+output_path = base_dir / "imagem_codificada.png"
 
 def menu():
     opcoes = input(
@@ -13,6 +21,8 @@ def menu():
     
     match opcoes:
         case '1':
+            texto = input('Digite um texto: ')
+            texto_embutido(image_path, texto, output_path)
             return False
         case '2':
             return False
